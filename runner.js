@@ -10,14 +10,6 @@ const DEFAULT_OPTIONS = {
   target: './public'
 }
 
-const data = {
-  files: {},
-  meta: {
-    title: 'test'
-  },
-  options: DEFAULT_OPTIONS
-}
-
 // util functions
 
 const readFile = data => file => ({
