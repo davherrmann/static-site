@@ -7,7 +7,8 @@ const marked = require('marked')
 
 const DEFAULT_OPTIONS = {
   source: './content',
-  target: './public'
+  target: './public',
+  static: './static'
 }
 
 // util functions
@@ -80,6 +81,8 @@ const createIndexFile = () => data => {
   }
 }
 
+const copyStaticFiles = () => data => fse.copySync(data.options.static, data.options.target)
+
 const clearTargetDirectory = () => data => fse.emptyDirSync(data.options.target)
 
 const writeFiles = () => data => {
@@ -135,5 +138,6 @@ runner()
 .use(render(require('./templates/index.js')))
 .use(clearTargetDirectory())
 .use(writeFiles())
+.use(copyStaticFiles())
 .use(logData())
 .build()
