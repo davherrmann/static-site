@@ -32,7 +32,7 @@ const post = data => `
 
 const isHome = page => page.path === 'index.html'
 
-const useFolder = link => link.replace('/index.html', '')
+const useFolder = link => link.replace('index.html', '')
 
 module.exports = data => `
 ${header(data)}
