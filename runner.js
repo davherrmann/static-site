@@ -88,6 +88,8 @@ const createIndexFile = () => data => {
   }
 }
 
+const clearTargetDirectory = () => data => fse.emptyDirSync(data.options.target)
+
 const writeFiles = () => data => {
   data.files.forEach(file => {
     const targetPath = path.join(data.options.target, file.path)
@@ -139,6 +141,7 @@ runner()
 .use(markdown())
 .use(render(require('./templates/index.js')))
 .use(folderInsteadOfHtmlExtension())
+.use(clearTargetDirectory())
 .use(writeFiles())
 .use(logData())
 .build()
