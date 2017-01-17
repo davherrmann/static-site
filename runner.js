@@ -64,7 +64,7 @@ const render = template => data => {
         page: file
       })
       return Object.assign(file, {
-        content: template(pageData)
+        renderedContent: template(pageData)
       })
     })
   }
@@ -98,7 +98,7 @@ const writeFiles = () => data => {
   data.files.forEach(file => {
     const targetPath = path.join(data.options.target, file.path)
     fse.mkdirsSync(path.dirname(targetPath))
-    fs.writeFileSync(targetPath, file.content)
+    fs.writeFileSync(targetPath, file.renderedContent)
   })
 }
 
