@@ -16,6 +16,8 @@ const header = data => `
 
     <base href="${data.meta.baseUrl}">
 
+    <title>${isHome(data.page) ? data.title : data.page.title}</title>
+
     <link rel="stylesheet" href="theme.css">
   </head>
   <body>
