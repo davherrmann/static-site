@@ -1,5 +1,15 @@
-const header = require('../templates/header.js')
-const footer = require('../templates/footer.js')
+const header = data => `
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+`
+
+const footer = data => `
+  </body>
+</html>
+`
 
 const posts = data => `
 <ul class="posts">
