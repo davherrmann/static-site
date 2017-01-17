@@ -49,6 +49,19 @@ const yamlFrontMatter = () => data => {
   }
 }
 
+const render = template => data => {
+  return {
+    files: data.files.map(file => {
+      const pageData = Object.assign({}, data, {
+        page: {}
+      })
+      return Object.assign(file, {
+        content: template(pageData)
+      })
+    })
+  }
+}
+
 // runner
 
 const runner = () => {
@@ -64,7 +77,7 @@ const runner = () => {
       plugins.forEach(plugin => {
         data = Object.assign(data, plugin(data))
       })
-      console.log(JSON.stringify(data))
+      console.log(JSON.stringify(data, null, 2))
     }
   }
 }
@@ -78,4 +91,5 @@ runner()
 }))
 .use(readFiles())
 .use(yamlFrontMatter())
+.use(render(require('./templates/index.js')))
 .build()
