@@ -17,7 +17,7 @@ const header = data => `
 
     <base href="${data.meta.baseUrl}">
 
-    <title>${isHome(data.page) ? data.title : data.page.title}</title>
+    <title>${isHome(data.page) ? data.meta.title : data.page.meta.title + ' &middot; ' + data.meta.title}</title>
 
     <!-- TODO canonical link, rss link, language in html and body-->
 
@@ -25,6 +25,32 @@ const header = data => `
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   </head>
   <body>
+`
+
+const sidebar = data => `
+<div class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      <a href="${data.meta.baseUrl}">
+        <h1>
+          I <i class="fa fa-heart-o" aria-hidden="true"></i> SOFTWARE
+        </h1>
+      </a>
+      <p class="lead">
+        ${data.meta.description}
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a></li>
+      ${data.meta.menu.map(({name, url}) => `
+        <li><a href="${url}">${name}</a></li>
+      `).join('')}
+    </ul>
+
+    <p class="footnote">${data.meta.copyright}</p>
+  </div>
+</div>
 `
 
 const footer = data => `
@@ -55,6 +81,7 @@ const useFolder = link => link.replace('index.html', '')
 
 module.exports = data => `
 ${header(data)}
+  ${sidebar(data)}
   <h1>${data.meta.title}</h1>
   <div id="content">
     ${isHome(data.page)

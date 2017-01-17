@@ -138,7 +138,12 @@ runner()
 }))
 .use(meta({
   baseUrl: 'http://localhost:8887/',
-  title: 'Hello World!'
+  title: 'I ♡ SOFTWARE',
+  copyright: '© David Herrmann',
+  description: 'code by David Herrmann',
+  menu: [
+    {name: 'Blog', url: 'blog/'}
+  ]
 }))
 .use(readFiles())
 .use(createIndexFile())
