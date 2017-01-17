@@ -19,8 +19,8 @@ const data = {
 
 // util functions
 
-const readFile = file => ({
-  path: file,
+const readFile = data => file => ({
+  path: path.relative(data.options.source, file),
   name: path.basename(file),
   content: fs.readFileSync(file, {encoding: 'utf-8'})
 })
@@ -28,7 +28,7 @@ const readFile = file => ({
 // plugins
 
 const readFiles = () => data => ({
-  files: glob.sync('./content/**/*.md').map(readFile)
+  files: glob.sync('./content/**/*.md').map(readFile(data))
 })
 
 const options = (options) => data => {
@@ -87,7 +87,7 @@ const createIndexFile = () => data => {
 
 const writeFiles = () => data => {
   data.files.forEach(file => {
-    const targetPath = path.join(data.options.target, path.relative(data.options.source, file.path))
+    const targetPath = path.join(data.options.target, file.path)
     fs.writeFileSync(targetPath, file.content)
   })
 }
