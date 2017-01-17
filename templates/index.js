@@ -3,17 +3,17 @@ const footer = require('../templates/footer.js')
 
 const posts = data => `
 <div class="posts">
-  ${JSON.stringify(data.pages)}
+  ${JSON.stringify(data.files.reduce((list, page) => list.concat([page.path]), []))}
 </div>
 `
 
 const post = data => `
 <div class="post">
-  ${JSON.stringify(data.page)}
+  ${data.page.content}
 </div>
 `
 
-const isHome = data => data.page.path === 'index.html'
+const isHome = data => data.page.path === './index.html'
 
 module.exports = data => `
 ${header(data)}

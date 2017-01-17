@@ -53,7 +53,7 @@ const render = template => data => {
   return {
     files: data.files.map(file => {
       const pageData = Object.assign({}, data, {
-        page: {}
+        page: file
       })
       return Object.assign(file, {
         content: template(pageData)
@@ -63,6 +63,16 @@ const render = template => data => {
 }
 
 const logData = () => data => console.log(JSON.stringify(data, null, 2))
+
+const createIndexFile = () => data => {
+  return {
+    files: data.files.concat([{
+      path: './index.html',
+      name: 'index.html',
+      content: ''
+    }])
+  }
+}
 
 // runner
 
@@ -91,6 +101,7 @@ runner()
   title: 'Hello World!'
 }))
 .use(readFiles())
+.use(createIndexFile())
 .use(yamlFrontMatter())
 .use(render(require('./templates/index.js')))
 .use(logData())
