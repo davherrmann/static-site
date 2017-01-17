@@ -94,6 +94,17 @@ const writeFiles = () => data => {
   })
 }
 
+const folderInsteadOfHtmlExtension = () => data => {
+  return {
+    files: data.files.map(file => file.name === 'index.html'
+      ? file
+      : Object.assign(file, {
+        path: file.path.replace(/\.html$/, '/index.html'),
+        name: 'index.html'
+      }))
+  }
+}
+
 // runner
 
 const runner = () => {
@@ -125,6 +136,7 @@ runner()
 .use(yamlFrontMatter())
 .use(markdown())
 .use(render(require('./templates/index.js')))
+.use(folderInsteadOfHtmlExtension())
 .use(writeFiles())
 .use(logData())
 .build()
