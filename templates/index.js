@@ -2,12 +2,14 @@ const header = require('../templates/header.js')
 const footer = require('../templates/footer.js')
 
 const posts = data => `
-<div class="posts">
-  ${JSON.stringify(data.files
+<ul class="posts">
+  ${data.files
     .filter(file => !isHome(file))
-    .reduce((list, page) => list.concat([page.path]), [])
-  )}
-</div>
+    .reduce((list, page) => list + `
+      <li><a href="${useFolder(page.path)}">${useFolder(page.path)}</a></li>
+    `, '')
+  }
+</ul>
 `
 
 const post = data => `
@@ -17,6 +19,8 @@ const post = data => `
 `
 
 const isHome = page => page.path === 'index.html'
+
+const useFolder = link => link.replace('/index.html', '')
 
 module.exports = data => `
 ${header(data)}
