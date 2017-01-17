@@ -24,7 +24,7 @@ const useFolder = link => link.replace('/index.html', '')
 
 module.exports = data => `
 ${header(data)}
-  <h1>${data.title}</h1>
+  <h1>${data.meta.title}</h1>
   <div id="content">
     ${isHome(data.page)
       ? posts(data)
