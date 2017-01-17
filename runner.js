@@ -74,6 +74,13 @@ const createIndexFile = () => data => {
   }
 }
 
+const writeFiles = () => data => {
+  data.files.forEach(file => {
+    const targetPath = path.join(data.options.target, path.relative(data.options.source, file.path))
+    fs.writeFileSync(targetPath, file.content)
+  })
+}
+
 // runner
 
 const runner = () => {
@@ -104,5 +111,6 @@ runner()
 .use(createIndexFile())
 .use(yamlFrontMatter())
 .use(render(require('./templates/index.js')))
+.use(writeFiles())
 .use(logData())
 .build()
