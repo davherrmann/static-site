@@ -62,6 +62,8 @@ const render = template => data => {
   }
 }
 
+const logData = () => data => console.log(JSON.stringify(data, null, 2))
+
 // runner
 
 const runner = () => {
@@ -77,7 +79,6 @@ const runner = () => {
       plugins.forEach(plugin => {
         data = Object.assign(data, plugin(data))
       })
-      console.log(JSON.stringify(data, null, 2))
     }
   }
 }
@@ -92,4 +93,5 @@ runner()
 .use(readFiles())
 .use(yamlFrontMatter())
 .use(render(require('./templates/index.js')))
+.use(logData())
 .build()
