@@ -4,6 +4,7 @@ const path = require('path')
 const glob = require('glob')
 const matter = require('gray-matter')
 const marked = require('marked')
+const minifier = require('html-minifier')
 
 const DEFAULT_OPTIONS = {
   source: './content',
@@ -81,6 +82,14 @@ const createIndexFile = () => data => {
   }
 }
 
+const minifyHtml = () => data => {
+  return {
+    files: data.files.map(file => Object.assign(file, {
+      content: minifier.minify(file.content, {collapseWhitespace: true})
+    }))
+  }
+}
+
 const copyStaticFiles = () => data => fse.copySync(data.options.static, data.options.target)
 
 const clearTargetDirectory = () => data => fse.emptyDirSync(data.options.target)
@@ -136,6 +145,7 @@ runner()
 .use(markdown())
 .use(maskHtmlExtension())
 .use(render(require('./templates/index.js')))
+.use(minifyHtml())
 .use(clearTargetDirectory())
 .use(writeFiles())
 .use(copyStaticFiles())
