@@ -80,7 +80,7 @@ const logData = () => data => console.log(JSON.stringify(data, null, 2))
 const createIndexFile = () => data => {
   return {
     files: data.files.concat([{
-      path: './index.html',
+      path: 'index.html',
       name: 'index.html',
       content: ''
     }])

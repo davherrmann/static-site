@@ -16,7 +16,7 @@ const post = data => `
 </div>
 `
 
-const isHome = page => page.path === './index.html'
+const isHome = page => page.path === 'index.html'
 
 module.exports = data => `
 ${header(data)}
