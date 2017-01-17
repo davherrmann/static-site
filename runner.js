@@ -137,6 +137,7 @@ runner()
   testOption: 'test'
 }))
 .use(meta({
+  baseUrl: 'http://localhost:8887/',
   title: 'Hello World!'
 }))
 .use(readFiles())

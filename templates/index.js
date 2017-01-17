@@ -3,6 +3,8 @@ const header = data => `
   <head>
     <meta charset="utf-8">
 
+    <base href="${data.meta.baseUrl}">
+
     <link rel="stylesheet" href="theme.css">
   </head>
   <body>
