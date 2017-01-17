@@ -90,7 +90,7 @@ const writeFiles = () => data => {
   })
 }
 
-const folderInsteadOfHtmlExtension = () => data => {
+const maskHtmlExtension = () => data => {
   return {
     files: data.files.map(file => file.name === 'index.html'
       ? file
@@ -131,7 +131,7 @@ runner()
 .use(createIndexFile())
 .use(yamlFrontMatter())
 .use(markdown())
-.use(folderInsteadOfHtmlExtension())
+.use(maskHtmlExtension())
 .use(render(require('./templates/index.js')))
 .use(clearTargetDirectory())
 .use(writeFiles())
