@@ -59,33 +59,29 @@ const footer = data => `
 `
 
 const posts = data => `
-<div class="content container">
-  <div class="posts">
-    ${data.files
-      .filter(file => !isHome(file))
-      .reduce((list, page) => list + `
-        <div class="post">
-          <h1 class="post-title">
-            <a href="${useFolder(page.path)}">
-              ${page.meta.title}
-            </a>
-          </h1>
-          <span class="post-date">${page.meta.date}</span>
-          ${page.content}
-        </div>
-      `, '')
-    }
-  </div>
+<div class="posts">
+  ${data.files
+    .filter(file => !isHome(file))
+    .reduce((list, page) => list + `
+      <div class="post">
+        <h1 class="post-title">
+          <a href="${useFolder(page.path)}">
+            ${page.meta.title}
+          </a>
+        </h1>
+        <span class="post-date">${page.meta.date}</span>
+        ${page.content}
+      </div>
+    `, '')
+  }
 </div>
 `
 
 const post = data => `
-<div class="content container">
-  <div class="post">
-    <h1 class="post-title">${data.page.meta.title}</h1>
-    <span class="post-date">${data.page.meta.date}</span>
-    ${data.page.content}
-  </div>
+<div class="post">
+  <h1 class="post-title">${data.page.meta.title}</h1>
+  <span class="post-date">${data.page.meta.date}</span>
+  ${data.page.content}
 </div>
 `
 
@@ -96,9 +92,11 @@ const useFolder = link => link.replace('index.html', '')
 module.exports = data => `
 ${header(data)}
   ${sidebar(data)}
-  ${isHome(data.page)
-    ? posts(data)
-    : post(data)
-  }
+  <div class="content container">
+    ${isHome(data.page)
+      ? posts(data)
+      : post(data)
+    }
+  </div>
 ${footer(data)}
 `
