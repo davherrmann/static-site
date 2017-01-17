@@ -19,7 +19,7 @@ const header = data => `
 
     <title>${isHome(data.page) ? data.title : data.page.title}</title>
 
-    <!-- TODO canonical link, rss link-->
+    <!-- TODO canonical link, rss link, language in html and body-->
 
     <link rel="stylesheet" href="theme.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
