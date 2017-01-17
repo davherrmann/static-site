@@ -5,6 +5,7 @@ const glob = require('glob')
 const matter = require('gray-matter')
 const marked = require('marked')
 const minifier = require('html-minifier')
+const prism = require('prismjs')
 
 const DEFAULT_OPTIONS = {
   source: './content',
@@ -46,6 +47,10 @@ const yamlFrontMatter = () => data => {
 }
 
 const markdown = () => data => {
+  marked.setOptions({
+    highlight: (code, lang) => prism.highlight(code, prism.languages[lang]),
+    sanitize: false
+  })
   return {
     files: data.files.map(file => {
       return Object.assign(file, {
