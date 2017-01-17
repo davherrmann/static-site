@@ -2,6 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const glob = require('glob')
 const matter = require('gray-matter')
+const marked = require('marked')
 
 const DEFAULT_OPTIONS = {
   source: './content',
@@ -44,6 +45,16 @@ const yamlFrontMatter = () => data => {
       return Object.assign(file, {
         meta: data,
         content
+      })
+    })
+  }
+}
+
+const markdown = () => data => {
+  return {
+    files: data.files.map(file => {
+      return Object.assign(file, {
+        content: marked(file.content)
       })
     })
   }
@@ -110,6 +121,7 @@ runner()
 .use(readFiles())
 .use(createIndexFile())
 .use(yamlFrontMatter())
+.use(markdown())
 .use(render(require('./templates/index.js')))
 .use(writeFiles())
 .use(logData())
