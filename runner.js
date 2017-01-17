@@ -1,9 +1,9 @@
 const fs = require('fs')
+const fse = require('fs-extra')
 const path = require('path')
 const glob = require('glob')
 const matter = require('gray-matter')
 const marked = require('marked')
-const mkdirp = require('mkdirp')
 
 const DEFAULT_OPTIONS = {
   source: './content',
@@ -91,7 +91,7 @@ const createIndexFile = () => data => {
 const writeFiles = () => data => {
   data.files.forEach(file => {
     const targetPath = path.join(data.options.target, file.path)
-    mkdirp.sync(path.dirname(targetPath))
+    fse.mkdirsSync(path.dirname(targetPath))
     fs.writeFileSync(targetPath, file.content)
   })
 }
