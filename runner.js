@@ -54,6 +54,8 @@ const markdown = () => data => {
   return {
     files: data.files.map(file => {
       return Object.assign(file, {
+        path: file.path.replace(/md$/, 'html'),
+        name: file.name.replace(/md$/, 'html'),
         content: marked(file.content)
       })
     })
