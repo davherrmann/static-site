@@ -12,6 +12,7 @@
     "html-minifier": "^3.2.3",
     "html-webpack-plugin": "^2.26.0",
     "marked": "^0.3.6",
+    "moment": "^2.17.1",
     "webpack": "beta"
   }
 }

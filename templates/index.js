@@ -1,3 +1,5 @@
+const moment = require('moment')
+
 const header = data => `
 <!DOCTYPE html>
 <html>
@@ -69,7 +71,7 @@ const posts = data => `
             ${page.meta.title}
           </a>
         </h1>
-        <span class="post-date">${page.meta.date}</span>
+        <span class="post-date">${moment(page.meta.date).format('LL')}</span>
         ${page.content}
       </div>
     `, '')
@@ -80,7 +82,7 @@ const posts = data => `
 const post = data => `
 <div class="post">
   <h1 class="post-title">${data.page.meta.title}</h1>
-  <span class="post-date">${data.page.meta.date}</span>
+  <span class="post-date">${moment(data.page.meta.date).format('LL')}</span>
   ${data.page.content}
 </div>
 `
