@@ -80,8 +80,12 @@ const posts = data => `
 `
 
 const post = data => `
-<div class="post">
-  ${data.page.content}
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">${data.page.meta.title}</h1>
+    <span class="post-date">${data.page.meta.date}</span>
+    ${data.page.content}
+  </div>
 </div>
 `
 
