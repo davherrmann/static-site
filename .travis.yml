@@ -23,6 +23,6 @@ script:
 
 after_success:
   - cd public
-  - git add --all
+  - git add --all .
   - git commit -m "rebuild website triggered by commit ${TRAVIS_COMMIT}"
   - git push origin master
