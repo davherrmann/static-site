@@ -56,6 +56,7 @@ const sidebar = data => `
 `
 
 const footer = data => `
+    <script src="calc-results.js"></script>
   </body>
 </html>
 `
