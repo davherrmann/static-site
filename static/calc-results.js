@@ -41,7 +41,6 @@ function startLoop (callback) {
 
 function three (init) {
   const currentContainer = container
-  const THREE = window.THREE
   loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js', () => {
     const width = currentContainer.offsetWidth
     const height = 300
