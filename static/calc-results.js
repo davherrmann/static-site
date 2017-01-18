@@ -1,11 +1,33 @@
 let container = null
 
-Array
+const whichAnimationEvent = () => {
+  var el = document.createElement('fakeelement')
+  var animations = {
+    'animation': 'animationend',
+    'OAnimation': 'oAnimationEnd',
+    'MozAnimation': 'animationend',
+    'WebkitAnimation': 'webkitAnimationEnd'
+  }
+
+  for (let a in animations) {
+    if (el.style[a] !== undefined) {
+      return animations[a]
+    }
+  }
+}
+
+const heart = document.querySelector('.sidebar-about .fa')
+
+/* Listen for a transition! */
+var animationEvent = whichAnimationEvent()
+animationEvent && heart.addEventListener(animationEvent, () => {
+  Array
   .from(document.querySelectorAll('code.lang-javascript'))
   .forEach(element => {
     container = createContainer(element.parentNode)
     eval(element.textContent)
   })
+})
 
 function createElementFrom (string) {
   const div = document.createElement('div')
