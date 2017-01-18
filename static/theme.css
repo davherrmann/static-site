@@ -354,6 +354,62 @@ a.sidebar-nav-item:focus {
   text-decoration: none;
 }
 
+.sidebar-about .fa {
+  width: 2.4rem;
+  animation-name: fontAwesomeBlur;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: 0.6s;
+}
+
+@keyframes fontAwesomeBlur {
+    0% {
+        transform: translateY(-25%);
+        -webkit-filter: blur(5px);
+    }
+    100% {
+        transform: translateY(0);
+        -webkit-filter: blur(0px);
+    }
+}
+
+p.footnote {
+  margin-bottom: 0;
+}
+
+pre, pre[class*=language-] {
+  background-color: #f9f9f9;
+  margin: .5em 0;
+  padding: 1rem;
+}
+
+.result-container {
+  margin-bottom: 1rem;
+}
+
+.result-container pre {
+  position: relative;
+}
+
+.result-container .fa {
+  animation-name: fontAwesomeFade;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: 0.6s;
+  font-size: 1rem;
+  position: absolute;
+  right: 1rem;
+}
+
+@keyframes fontAwesomeFade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 
 /**
  * prism.js default theme for JavaScript, CSS and HTML
