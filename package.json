@@ -1,7 +1,7 @@
 {
   "name": "static-site",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "runner.js",
   "repository": "https://github.com/davherrmann/static-site",
   "author": "David Herrmann <davherrmann@googlemail.com>",
   "license": "MIT",
@@ -13,7 +13,6 @@
     "html-webpack-plugin": "^2.26.0",
     "marked": "^0.3.6",
     "moment": "^2.17.1",
-    "prismjs": "^1.6.0",
-    "webpack": "beta"
+    "prismjs": "^1.6.0"
   }
 }
