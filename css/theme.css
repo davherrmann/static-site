@@ -369,6 +369,7 @@ a.sidebar-nav-item:focus {
 }
 
 .sidebar-about .fa {
+  display: inline-block;
   width: 2.4rem;
   animation-name: fontAwesomeBlur;
   animation-iteration-count: 1;
