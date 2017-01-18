@@ -142,7 +142,7 @@ runner()
   testOption: 'test'
 }))
 .use(meta({
-  baseUrl: 'http://localhost:8887/',
+  baseUrl: 'https://i.love.software/',
   title: 'I ♡ SOFTWARE',
   copyright: '© David Herrmann',
   description: 'code by David Herrmann',
