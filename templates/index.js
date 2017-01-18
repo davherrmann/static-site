@@ -24,7 +24,6 @@ const header = data => `
     <!-- TODO canonical link, rss link, language in html and body-->
 
     <link rel="stylesheet" href="theme.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   </head>
   <body>
 `
