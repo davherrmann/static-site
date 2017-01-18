@@ -157,7 +157,7 @@ runner()
 .use(maskHtmlExtension())
 .use(render(require('./templates/index.js')))
 .use(minifyHtml())
-// TODO find a way to keep .git folder
+// TODO find a way to keep .git folder and CNAME!
 // .use(clearTargetDirectory())
 .use(writeFiles())
 .use(copyStaticFiles())
