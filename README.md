@@ -1,6 +1,1 @@
-# static-site
-
-**requests**
-- i.love.software/favicon.ico
-- i.love.software/blog/xyz -> html page with md content of xyz
-- i.love.software#blog/xyz -> ajax request blog/xyz json and show content, pushState i.love.software/blog/xyz
+# [David's Blog](https://i.love.software) [![Build Status](https://travis-ci.org/davherrmann/davherrmann.github.io.svg?branch=sources)](https://travis-ci.org/davherrmann/davherrmann.github.io)
