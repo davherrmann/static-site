@@ -1,0 +1,100 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=aljv5RGPao">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png?v=aljv5RGPao" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png?v=aljv5RGPao" sizes="16x16">
+    <link rel="manifest" href="/manifest.json?v=aljv5RGPao">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg?v=aljv5RGPao" color="#49045f">
+    <link rel="shortcut icon" href="/favicon.ico?v=aljv5RGPao">
+    <meta name="apple-mobile-web-app-title" content="I ♡ SOFTWARE">
+    <meta name="application-name" content="I ♡ SOFTWARE">
+    <meta name="theme-color" content="#49045f">
+
+    <base href="http://localhost:8887/">
+
+    <title>Working with gradients in three.js &middot; I ♡ SOFTWARE</title>
+
+    <!-- TODO canonical link, rss link, language in html and body-->
+
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  </head>
+  <body>
+
+  
+<div class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      <a href="http://localhost:8887/">
+        <h1>
+          I <i class="fa fa-heart-o" aria-hidden="true"></i> SOFTWARE
+        </h1>
+      </a>
+      <p class="lead">
+        code by David Herrmann
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a></li>
+      
+        <li><a href="blog/">Blog</a></li>
+      
+    </ul>
+
+    <p class="footnote">© David Herrmann</p>
+  </div>
+</div>
+
+  <div class="content container">
+    
+<div class="post">
+  <h1 class="post-title">Working with gradients in three.js</h1>
+  <span class="post-date">January 10, 2017</span>
+  <p>Testing some embedded code:</p>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span>
+<span class="token keyword">const</span> b <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token punctuation">{</span>y<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token function">display</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+</code></pre>
+<pre><code class="lang-javascript"><span class="token function">canvas</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">{</span>context<span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  context<span class="token punctuation">.</span><span class="token function">beginPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  context<span class="token punctuation">.</span><span class="token function">arc</span><span class="token punctuation">(</span>
+    width <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    height <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>width<span class="token punctuation">,</span> height<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.3</span><span class="token punctuation">,</span>
+    <span class="token number">0</span><span class="token punctuation">,</span>
+    Math<span class="token punctuation">.</span>PI <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token boolean">true</span>
+  <span class="token punctuation">)</span>
+  context<span class="token punctuation">.</span>fillStyle <span class="token operator">=</span> <span class="token string">'#49045f'</span><span class="token punctuation">;</span>
+  context<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<pre><code class="lang-javascript"><span class="token function">three</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">{</span>scene<span class="token punctuation">,</span> render<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> geometry <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">THREE<span class="token punctuation">.</span>CubeGeometry</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> material <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">THREE<span class="token punctuation">.</span>MeshNormalMaterial</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">const</span> mesh <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">THREE<span class="token punctuation">.</span>Mesh</span><span class="token punctuation">(</span>geometry<span class="token punctuation">,</span> material<span class="token punctuation">)</span>
+  scene<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>mesh<span class="token punctuation">)</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    mesh<span class="token punctuation">.</span>rotation<span class="token punctuation">.</span>x <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">0.01</span><span class="token punctuation">;</span>
+    mesh<span class="token punctuation">.</span>rotation<span class="token punctuation">.</span>y <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">0.02</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+
+</div>
+
+  </div>
+
+    <script src="calc-results.js"></script>
+  </body>
+</html>
+
