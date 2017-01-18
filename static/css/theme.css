@@ -18,11 +18,10 @@ body {
 }
 
 html {
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
-  /*font-family: -apple-system, BlinkMacSystemFont,
+  font-family: -apple-system, BlinkMacSystemFont,
       "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
       "Fira Sans", "Droid Sans", "Helvetica Neue",
-      sans-serif;*/
+      sans-serif;
   font-size: 16px;
   line-height: 1.5;
 }
@@ -291,7 +290,7 @@ tbody tr:nth-child(odd) th {
 .sidebar-about h1 {
   color: #fff;
   margin-top: 0;
-  font-family: "Abril Fatface", serif;
+  font-family: "Book Antiqua", "Palatino", "Palatino Linotype", "Palatino LT STD", Georgia, serif;
   font-size: 3.25rem;
 }
 
