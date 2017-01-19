@@ -4,7 +4,7 @@ title: "Working with gradients in three.js"
 draft: false
 ---
 
-Testing some embedded code:
+Testing some embedded code with a [link upfront](http://i.love.software/):
 
 ```javascript
 const a = {x: 1}
