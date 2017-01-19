@@ -59,7 +59,12 @@ a {
 
 a:hover,
 a:focus {
-  text-decoration: underline;
+  background-image: linear-gradient(to bottom, currentColor, currentColor);
+  background-position: 0 1.04em;
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  text-shadow: -2px -0.02em white, 2px -0.02em white, -2px 0.02em white, 2px 0.02em white,
+               -0.04em -0.02em white, 0.04em -0.02em white, -0.04em 0.02em white, 0.04em 0.02em white;
 }
 
 /* headings */
@@ -284,6 +289,12 @@ tbody tr:nth-child(odd) th {
 /* Sidebar links */
 .sidebar a {
   color: #fff;
+}
+
+.sidebar a:hover,
+.sidebar a:focus {
+  text-shadow: -2px -0.02em #49045f, 2px -0.02em #49045f, -2px 0.02em #49045f, 2px 0.02em #49045f,
+               -0.04em -0.02em #49045f, 0.04em -0.02em #49045f, -0.04em 0.02em #49045f, 0.04em 0.02em #49045f;
 }
 
 /* About section */
