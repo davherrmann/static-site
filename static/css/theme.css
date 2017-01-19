@@ -63,8 +63,10 @@ a:focus {
   background-position: 0 1.04em;
   background-repeat: no-repeat;
   background-size: 100% 1px;
-  text-shadow: -2px -0.02em white, 2px -0.02em white, -2px 0.02em white, 2px 0.02em white,
-               -0.04em -0.02em white, 0.04em -0.02em white, -0.04em 0.02em white, 0.04em 0.02em white;
+  /* based on https://eager.io/blog/smarter-link-underlines/ */
+  text-shadow: .03em 0 white, -.03em 0 white, 0 .03em white, 0 -.03em white,
+               .06em 0 white, -.06em 0 white, .09em 0 white, -.09em 0 white,
+               .12em 0 white, -.12em 0 white, .15em 0 white, -.15em 0 white;
 }
 
 /* headings */
@@ -293,8 +295,9 @@ tbody tr:nth-child(odd) th {
 
 .sidebar a:hover,
 .sidebar a:focus {
-  text-shadow: -2px -0.02em #49045f, 2px -0.02em #49045f, -2px 0.02em #49045f, 2px 0.02em #49045f,
-               -0.04em -0.02em #49045f, 0.04em -0.02em #49045f, -0.04em 0.02em #49045f, 0.04em 0.02em #49045f;
+  text-shadow: .03em 0 #49045f, -.03em 0 #49045f, 0 .03em #49045f, 0 -.03em #49045f,
+               .06em 0 #49045f, -.06em 0 #49045f, .09em 0 #49045f, -.09em 0 #49045f,
+               .12em 0 #49045f, -.12em 0 #49045f, .15em 0 #49045f, -.15em 0 #49045f;
 }
 
 /* About section */
