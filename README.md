@@ -20,27 +20,50 @@ const css = path => file(path, minifyCss).path()
 //   hooked into file.content()? -> does it work when a file needs to be processed
 //   in different ways? e.g. md -> minified html & json for ajax?
 
+const frontmatter = config => file =>
+
 const configuration = {
-  title: "I ♡ SOFTWARE",
-  baseUrl
+  title: 'I ♡ SOFTWARE',
+  author: 'David Herrmann'
+  // TODO make config injectable via command line?
+  baseUrl: 'http://192.168.0.101:8080',
+
 }
 
-export default render = config => `
+const runner = configuration => ({
+  file: (path, ...plugins) => {...},
+  files: (path, ...plugins) => {...}
+})
+
+const {file, files} = runner(configuration)
+
+const sampleFile = {
+  path: 'css/theme.css',
+  name: 'theme.css',
+  content: '* {color: black;}'
+}
+
+export default render = config => file => `
   <!DOCTYPE html>
   <head>
     <link ref="stylesheet" src="${css('css/theme.css')}"
-    <style>${file('css/theme-inline.css', minifyCss).content}</style>
+    <style>${file('css/theme-inline.css', minifyCss()).content}</style>
   </head>
   <body>
-    <h1>Blog</h1>
-    <ul>
-      ${files('blog/*.md', markdown, minifyHtml).map(file => `
-          <li class="post">
-            <h2><a href="${file.path()}">${file.meta.title}</a></h2>
-            ${file.content}
-          </li>
-        `)}
-    </ul>
+    <div class="sidebar">
+      <a href="${file('blog', renderPostList(config)).path()}">Blog</a>
+    </div>
+    <div class="content">
+      <h1>Blog</h1>
+      <ul>
+        ${files('blog/*.md', frontmatter(), markdown(), minifyHtml(), render(config)).map(file => `
+            <li class="post">
+              <h2><a href="${file.path()}">${file.meta.title}</a></h2>
+              ${file.content}
+            </li>
+          `)}
+      </ul>
+    </div>
   </body>
 `
 
