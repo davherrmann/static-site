@@ -32,7 +32,8 @@ const configuration = {
 
 const runner = configuration => ({
   file: (path, ...plugins) => {...},
-  files: (path, ...plugins) => {...}
+  files: (path, ...plugins) => {...},
+  render: (render, file) => {...}
 })
 
 const {file, files} = runner(configuration)
@@ -43,7 +44,7 @@ const sampleFile = {
   content: '* {color: black;}'
 }
 
-export default render = config => file => `
+const render = config => file => `
   <!DOCTYPE html>
   <head>
     <link ref="stylesheet" src="${css('css/theme.css')}"
@@ -66,6 +67,9 @@ export default render = config => file => `
     </div>
   </body>
 `
+
+// files get rendered and written
+runner.render(render, file('index.html'))
 
 
 // maybe we don't even need a structure! we start with a root render(), all
