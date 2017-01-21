@@ -57,7 +57,7 @@ const render = config => file => `
     <div class="content">
       <h1>Blog</h1>
       <ul>
-        ${files('blog/*.md', frontmatter(), markdown(), minifyHtml(), render(config)).map(file => `
+        ${files('blog/*.md', frontmatter(), markdown(), render(config), minifyHtml()).map(file => `
             <li class="post">
               <h2><a href="${file.path()}">${file.meta.title}</a></h2>
               ${file.content}
@@ -69,7 +69,8 @@ const render = config => file => `
 `
 
 // files get rendered and written
-runner.render(render, file('index.html'))
+// maybe provide a write() instead of path()?
+file('index.html', render(config), minifyHtml()).path()
 
 
 // maybe we don't even need a structure! we start with a root render(), all
