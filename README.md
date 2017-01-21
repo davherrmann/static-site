@@ -4,7 +4,7 @@
 
 
 ```jsx
-import {file} from 'loaders'
+import {file, files} from 'loaders'
 import {minifyCss, markdown, minifyHtml} from 'plugins'
 
 // custom css loader
