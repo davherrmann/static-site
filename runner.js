@@ -160,6 +160,6 @@ runner()
 // TODO find a way to keep .git folder and CNAME!
 // .use(clearTargetDirectory())
 .use(writeFiles())
-.use(copyStaticFiles())
+.use(copyStaticFiles()) // should not be a mere copying -> minify?...
 .use(logData())
 .build()
