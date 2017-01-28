@@ -9,6 +9,7 @@ const {plugins: {render, raw, read, markdown, minifyCss, minifyHtml, yamlFrontMa
 const doc = createFile({
   baseUrl: 'http://127.0.0.1:8080/',
   copyright: '© David Herrmann',
+  color: '#49045f',
   description: 'code by David Herrmann',
   menu: [
     {name: 'Blog', url: 'blog/'}
@@ -21,6 +22,8 @@ const dependencies = []
 
 const link = createLink(dependencies)
 
+const preventCaching = url => url + '?v=aljv5RGPao'
+
 const header = ({configuration, file}) => `
 <!DOCTYPE html>
 <html>
@@ -28,15 +31,15 @@ const header = ({configuration, file}) => `
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="${link(doc('apple-touch-icon.png', raw())) + '?v=aljv5RGPao'}">
-    <link rel="icon" type="image/png" href="/favicon-32x32.png?v=aljv5RGPao" sizes="32x32">
-    <link rel="icon" type="image/png" href="/favicon-16x16.png?v=aljv5RGPao" sizes="16x16">
-    <link rel="manifest" href="/manifest.json?v=aljv5RGPao">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg?v=aljv5RGPao" color="#49045f">
-    <link rel="shortcut icon" href="/favicon.ico?v=aljv5RGPao">
+    <link rel="apple-touch-icon" sizes="180x180" href="${preventCaching(link(doc('apple-touch-icon.png', raw())))}">
+    <link rel="icon" type="image/png" href="${preventCaching(link(doc('favicon-32x32.png', raw())))}" sizes="32x32">
+    <link rel="icon" type="image/png" href="${preventCaching(link(doc('favicon-16x16.png', raw())))}" sizes="16x16">
+    <link rel="manifest" href="${preventCaching(link(doc('manifest.json', read())))}">
+    <link rel="mask-icon" href="${preventCaching(link(doc('safari-pinned-tab.svg', read())))}" color="${configuration.color}">
+    <link rel="shortcut icon" href="${preventCaching(link(doc('favicon.ico', raw())))}">
     <meta name="apple-mobile-web-app-title" content="${configuration.title}">
     <meta name="application-name" content="${configuration.title}">
-    <meta name="theme-color" content="#49045f">
+    <meta name="theme-color" content="${configuration.color}">
 
     <base href="${configuration.baseUrl}">
 
