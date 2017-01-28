@@ -441,8 +441,8 @@ right-align@^0.1.1:
     align-text "^0.1.1"
 
 ritter@^0.3.1:
-  version "0.3.7"
-  resolved "https://registry.yarnpkg.com/ritter/-/ritter-0.3.7.tgz#2a5303c9f046f187ee5215530dc35e399fd29232"
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/ritter/-/ritter-0.3.8.tgz#b450fc2592ba89733bc47de36f18d4094f33c3e3"
   dependencies:
     clean-css "^4.0.1"
     gray-matter "^2.1.0"
@@ -483,8 +483,8 @@ tiny-emitter@^1.0.0:
   resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-1.1.0.tgz#ab405a21ffed814a76c19739648093d70654fecb"
 
 toposort@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/toposort/-/toposort-1.0.0.tgz#b66cf385a1a8a8e68e45b8259e7f55875e8b06ef"
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/toposort/-/toposort-1.0.2.tgz#be1de72431320fcefe35a7b539c1c336cbcfd32c"
 
 trim-newlines@^1.0.0:
   version "1.0.0"

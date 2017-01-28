@@ -4,7 +4,7 @@ const glob = require('glob')
 const moment = require('moment')
 const path = require('path')
 const {createFile, createLink} = require('ritter')
-const {plugins: {render, markdown, minifyCss, minifyHtml, yamlFrontMatter}} = require('ritter')
+const {plugins: {render, raw, read, markdown, minifyCss, minifyHtml, yamlFrontMatter}} = require('ritter')
 
 const doc = createFile({
   baseUrl: 'http://127.0.0.1:8080/',
@@ -28,7 +28,7 @@ const header = ({configuration, file}) => `
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=aljv5RGPao">
+    <link rel="apple-touch-icon" sizes="180x180" href="${link(doc('apple-touch-icon.png', raw())) + '?v=aljv5RGPao'}">
     <link rel="icon" type="image/png" href="/favicon-32x32.png?v=aljv5RGPao" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-16x16.png?v=aljv5RGPao" sizes="16x16">
     <link rel="manifest" href="/manifest.json?v=aljv5RGPao">
@@ -48,8 +48,8 @@ const header = ({configuration, file}) => `
 
     <!-- TODO canonical link, rss link, language in html and body-->
 
-    <link rel="stylesheet" href="${link(doc('css/fonts.css', minifyCss()))}">
-    <link rel="stylesheet" href="${link(doc('css/theme.css', minifyCss()))}">
+    <link rel="stylesheet" href="${link(doc('css/fonts.css', read(), minifyCss()))}">
+    <link rel="stylesheet" href="${link(doc('css/theme.css', read(), minifyCss()))}">
   </head>
   <body>
 `
@@ -101,7 +101,7 @@ const blogFiles = configuration => glob.sync('blog/*.md', {cwd: configuration.so
 
 const posts = ({configuration}) => `
   <div class="posts">
-    ${blogFiles(configuration).map(path => doc(path, yamlFrontMatter(), markdown(), render(({file}) => `
+    ${blogFiles(configuration).map(path => doc(path, read(), yamlFrontMatter(), markdown(), render(({file}) => `
       <div class="post">
         <h1 class="post-title">
           <a href="${link(doc(file.path, render(file.content), render(frame), minifyHtml()))}">
