@@ -1,3 +1,4 @@
+const btoa = require('btoa')
 const fs = require('fs')
 const fse = require('fs-extra')
 const glob = require('glob')
@@ -51,8 +52,8 @@ const header = ({configuration, file}) => `
 
     <!-- TODO canonical link, rss link, language in html and body-->
 
-    <link rel="stylesheet" href="${link(doc('css/fonts.css', read(), minifyCss()))}">
-    <link rel="stylesheet" href="${link(doc('css/theme.css', read(), minifyCss()))}">
+    <style>${doc('css/theme.css', read(), minifyCss()).content}</style>
+
   </head>
   <body>
 `
@@ -63,7 +64,7 @@ const sidebar = ({configuration, file}) => `
     <div class="sidebar-about">
       <a href="${configuration.baseUrl}">
         <h1>
-          I <i class="fa fa-heart-o" aria-hidden="true"></i> SOFTWARE
+          I <i class="icon" aria-hidden="true">${doc('images/heart-o.svg', read()).content}</i> SOFTWARE
         </h1>
       </a>
       <p class="lead">

@@ -367,6 +367,13 @@ a.sidebar-nav-item:focus {
  *
  */
 
+.icon svg {
+  fill: #fff;
+  height: 1em;
+  vertical-align: text-top;
+  width: 1em;
+}
+
 .sidebar {
   background-color: #49045f;
   color: rgba(255,255,255,.75);
@@ -382,9 +389,7 @@ a.sidebar-nav-item:focus {
   text-decoration: none;
 }
 
-.sidebar-about .fa {
-  display: inline-block;
-  width: 2.4rem;
+.sidebar-about .icon svg {
   animation-name: fontAwesomeBlur;
   animation-iteration-count: 1;
   animation-timing-function: ease-out;
