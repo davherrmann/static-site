@@ -1,4 +1,3 @@
-const btoa = require('btoa')
 const fs = require('fs')
 const fse = require('fs-extra')
 const glob = require('glob')
@@ -85,7 +84,7 @@ const sidebar = ({configuration, file}) => `
 `
 
 const footer = context => `
-    <script src="calc-results.js"></script>
+    <script src="${link(doc('js/calc-results.js', read()))}"></script>
   </body>
 </html>
 `
