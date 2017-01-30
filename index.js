@@ -53,6 +53,8 @@ const header = ({configuration, file}) => `
 
     <style>${doc('css/theme.css', read(), minifyCss()).content}</style>
 
+    <script async src="${link(doc('js/calc-results.js', read()))}"></script>
+
   </head>
   <body>
 `
@@ -84,7 +86,6 @@ const sidebar = ({configuration, file}) => `
 `
 
 const footer = context => `
-    <script src="${link(doc('js/calc-results.js', read()))}"></script>
   </body>
 </html>
 `
