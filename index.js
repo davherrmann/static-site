@@ -101,11 +101,19 @@ const frame = context => `
   ${footer(context)}
 `
 
+const normalise = link => link.replace(/index.html$/, '')
+
+const index = () => context => Object.assign({}, context, {
+  file: Object.assign({}, context.file, {
+    path: context.file.path.replace(/.html$/, '/index.html')
+  })
+})
+
 const post = ({showLink} = {}) => ({file}) => `
   <div class="post">
     <h1 class="post-title">
       ${showLink
-        ? `<a href="${link(doc(file, render(post()), render(frame)))}">
+        ? `<a href="${normalise(link(doc(file, render(post()), render(frame), index())))}">
              ${file.meta.title}
            </a>`
         : `${file.meta.title}`
