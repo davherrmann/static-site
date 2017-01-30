@@ -367,6 +367,10 @@ a.sidebar-nav-item:focus {
  *
  */
 
+.pull-right {
+  float: right;
+}
+
 .icon svg {
   fill: #fff;
   height: 1em;

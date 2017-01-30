@@ -140,6 +140,37 @@ const posts = ({configuration}) => `
   </div>
 `
 
+const title = title => context => Object.assign({}, context, {
+  file: Object.assign({}, context.file, {
+    meta: Object.assign({}, context.file.meta, {
+      title
+    })
+  })
+})
+
+const postListItem = ({file}) => `
+  <li>
+    <span>
+      <a href="${file.path}">${file.meta.title}</a>
+      <time class="pull-right post-list">${moment(file.meta.date).format('LL')}</time>
+    </span>
+  </li>
+`
+
+const postList = ({configuration, file}) => `
+  <h1 class="title">${file.meta.title}</h1>
+  <ul class="posts">
+    ${blogFiles(configuration)
+      .map(path =>
+        doc(path,
+            read(),
+            yamlFrontMatter(),
+            render(postListItem)).content).join('')}
+  </ul>
+`
+
+link(doc('blog/index.html', title('Blog'), render(postList), render(frame)))
+
 const homeFile = doc('index.html', render(context => `
   ${header(context)}
   ${sidebar(context)}
