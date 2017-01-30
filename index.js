@@ -113,7 +113,7 @@ const post = ({showLink} = {}) => ({file}) => `
   <div class="post">
     <h1 class="post-title">
       ${showLink
-        ? `<a href="${normalise(link(doc(file, render(post()), render(frame), index())))}">
+        ? `<a href="${normalise(link(doc(file, render(post()), render(frame), index(), minifyHtml())))}">
              ${file.meta.title}
            </a>`
         : `${file.meta.title}`
