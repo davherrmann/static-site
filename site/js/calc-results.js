@@ -16,18 +16,28 @@ const whichAnimationEvent = () => {
   }
 }
 
+function init () {
+  const heart = document.querySelector('.sidebar-about .icon')
+
+  /* Listen for a transition! */
+  var animationEvent = whichAnimationEvent()
+  animationEvent && heart.addEventListener(animationEvent, () => {
+    Array
+    .from(document.querySelectorAll('code.lang-javascript'))
+    .forEach(element => {
+      container = createContainer(element.parentNode)
+      eval(element.textContent)
+    })
+  })
+}
+
 const heart = document.querySelector('.sidebar-about .icon')
 
-/* Listen for a transition! */
-var animationEvent = whichAnimationEvent()
-animationEvent && heart.addEventListener(animationEvent, () => {
-  Array
-  .from(document.querySelectorAll('code.lang-javascript'))
-  .forEach(element => {
-    container = createContainer(element.parentNode)
-    eval(element.textContent)
-  })
-})
+if (heart) {
+  init()
+} else {
+  document.addEventListener('onload', init)
+}
 
 function createElementFrom (string) {
   const div = document.createElement('div')
