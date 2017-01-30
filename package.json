@@ -1,7 +1,7 @@
 {
   "name": "static-site",
   "version": "1.0.0",
-  "main": "runner.js",
+  "main": "index.js",
   "repository": "https://github.com/davherrmann/static-site",
   "author": "David Herrmann <davherrmann@googlemail.com>",
   "license": "MIT",
