@@ -7,7 +7,7 @@ const {createFile, createLink} = require('ritter')
 const {plugins: {render, raw, read, markdown, minifyCss, minifyHtml, yamlFrontMatter}} = require('ritter')
 
 const doc = createFile({
-  baseUrl: 'http://127.0.0.1:8080/',
+  baseUrl: 'https://i.love.software/',
   copyright: '© David Herrmann',
   color: '#49045f',
   description: 'code by David Herrmann',
@@ -186,7 +186,7 @@ link(homeFile)
 console.log(dependencies.map(file => file.path))
 
 const writeTargetFile = file => {
-  const targetPath = path.join('generated', file.path)
+  const targetPath = path.join('public', file.path)
   fse.mkdirsSync(path.dirname(targetPath))
   fs.writeFileSync(targetPath, file.content)
 }

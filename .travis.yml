@@ -19,7 +19,8 @@ before_install:
 
 script:
   - git clone git@github.com:davherrmann/davherrmann.github.io.git public --branch master --single-branch
-  - node runner.js
+  - ls | grep -v .git | xargs rm -r
+  - node index.js
 
 after_success:
   - cd public
