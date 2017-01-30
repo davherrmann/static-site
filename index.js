@@ -183,6 +183,9 @@ const homeFile = doc('index.html', render(context => `
 `), minifyHtml())
 
 link(homeFile)
+link(doc('CNAME', read()))
+link(doc('google01a0df28d4492e88.html', read()))
+link(doc('mstile-150x150.png', raw()))
 console.log(dependencies.map(file => file.path))
 
 const writeTargetFile = file => {
