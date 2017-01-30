@@ -370,7 +370,7 @@ a.sidebar-nav-item:focus {
 .icon svg {
   fill: #fff;
   height: 1em;
-  vertical-align: text-top;
+  vertical-align: -0.15em;
   width: 1em;
 }
 
