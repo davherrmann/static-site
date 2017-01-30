@@ -100,21 +100,34 @@ const frame = context => `
   ${footer(context)}
 `
 
+const post = ({showLink} = {}) => ({file}) => `
+  <div class="post">
+    <h1 class="post-title">
+      ${showLink
+        ? `<a href="${link(doc(file, render(post()), render(frame)))}">
+             ${file.meta.title}
+           </a>`
+        : `${file.meta.title}`
+      }
+    </h1>
+    <span class="post-date">${moment(file.meta.date).format('LL')}</span>
+    ${file.content}
+  </div>
+`
+
 const blogFiles = configuration => glob.sync('blog/*.md', {cwd: configuration.source})
 
 const posts = ({configuration}) => `
   <div class="posts">
-    ${blogFiles(configuration).map(path => doc(path, read(), yamlFrontMatter(), markdown(), render(({file}) => `
-      <div class="post">
-        <h1 class="post-title">
-          <a href="${link(doc(file.path, render(file.content), render(frame), minifyHtml()))}">
-            ${file.meta.title}
-          </a>
-        </h1>
-        <span class="post-date">${moment(file.meta.date).format('LL')}</span>
-        ${file.content}
-      </div>
-    `), minifyHtml()).content).join('')}
+    ${blogFiles(configuration)
+      .map(path =>
+        doc(path,
+            read(),
+            yamlFrontMatter(),
+            markdown(),
+            render(post({showLink: true})),
+            minifyHtml()).content)
+      .join('')}
   </div>
 `
 

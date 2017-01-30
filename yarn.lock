@@ -76,8 +76,8 @@ center-align@^0.1.1:
     lazy-cache "^1.0.3"
 
 clean-css@4.0.x, clean-css@^4.0.1:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.0.2.tgz#4a871d3cdada1b506b93eda43b704f904e289b63"
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.0.3.tgz#9da7b59301d940c345757f175e6dfa6872c7de8e"
   dependencies:
     source-map "0.5.x"
 
@@ -252,8 +252,8 @@ html-minifier@^3.2.3:
     uglify-js "2.7.x"
 
 html-webpack-plugin@^2.26.0:
-  version "2.26.0"
-  resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-2.26.0.tgz#ba97c8a66f912b85df80d2aeea65966c8bd9249e"
+  version "2.28.0"
+  resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-2.28.0.tgz#2e7863b57e5fd48fe263303e2ffc934c3064d009"
   dependencies:
     bluebird "^3.4.7"
     html-minifier "^3.2.3"
@@ -441,8 +441,8 @@ right-align@^0.1.1:
     align-text "^0.1.1"
 
 ritter@^0.3.1:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/ritter/-/ritter-0.3.8.tgz#b450fc2592ba89733bc47de36f18d4094f33c3e3"
+  version "0.3.9"
+  resolved "https://registry.yarnpkg.com/ritter/-/ritter-0.3.9.tgz#04c329319c524c0cd57a2218ce4ebbc03e466d53"
   dependencies:
     clean-css "^4.0.1"
     gray-matter "^2.1.0"
